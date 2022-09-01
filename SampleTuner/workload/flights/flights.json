@@ -1,0 +1,63 @@
+{
+    "tables": {
+        "fact": {
+            "name": "tbl_flights",
+            "fields": [
+                {
+                    "field": "YEAR_DATE",
+                    "type": "categorical",
+                    "cast": "int"
+                },
+                {
+                    "field": "UNIQUE_CARRIER",
+                    "type": "categorical"
+                },
+                {
+                    "field": "ORIGIN",
+                    "type": "categorical"
+                },
+                {
+                    "field": "ORIGIN_STATE_ABR",
+                    "type": "categorical",
+                    "deriveFrom": "ORIGIN"
+                },
+                {
+                    "field": "DEST",
+                    "type": "categorical"
+                },
+                {
+                    "field": "DEST_STATE_ABR",
+                    "type": "categorical",
+                    "deriveFrom": "DEST"
+                },
+                {
+                    "field": "DEP_DELAY",
+                    "type": "quantitative"
+                },
+                {
+                    "field": "TAXI_OUT",
+                    "type": "quantitative"
+                },
+                {
+                    "field": "TAXI_IN",
+                    "type": "quantitative"
+                },
+                {
+                    "field": "ARR_DELAY",
+                    "type": "quantitative"
+                },
+                {
+                    "field": "AIR_TIME",
+                    "type": "quantitative"
+                },
+                {
+                    "field": "DISTANCE",
+                    "type": "quantitative"
+                }
+            ]
+        },
+        "dimension": {
+            "foreign_key": ""
+        }
+    }
+}

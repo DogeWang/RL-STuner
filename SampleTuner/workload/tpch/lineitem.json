@@ -1,0 +1,80 @@
+{
+    "tables": {
+        "fact": {
+            "name": "tbl_lineitem",
+            "fields": [
+                {
+                    "field": "L_ORDERKEY",
+                    "type": "categorical",
+                    "cast": "int"
+                },
+		        {
+                    "field": "L_PARTKEY",
+                    "type": "categorical",
+                    "cast": "int"
+                },
+		        {
+                    "field": "L_SUPPKEY",
+                    "type": "categorical",
+                    "cast": "int"
+                },
+		        {
+                    "field": "L_LINENUMBER",
+                    "type": "quantitative",
+                    "cast": "int"
+                },
+                {
+                    "field": "L_QUANTITY",
+                    "type": "quantitative"
+                },
+                {
+                    "field": "L_EXTENDEDPRICE",
+                    "type": "quantitative"
+                },
+                {
+                    "field": "L_DISCOUNT",
+                    "type": "quantitative"
+                },
+                {
+                    "field": "L_TAX",
+                    "type": "quantitative"
+                },
+                {
+                    "field": "L_RETURNFLAG",
+                    "type": "categorical"
+                },
+                {
+                    "field": "L_LINESTATUS",
+                    "type": "categorical"
+                },
+                {
+                    "field": "L_SHIPDATE",
+                    "type": "categorical"
+                },
+                {
+                    "field": "L_COMMITDATE",
+                    "type": "categorical"
+                },
+                {
+                    "field": "L_RECEIPTDATE",
+                    "type": "categorical"
+                },
+                {
+                    "field": "L_SHIPINSTRUCT",
+                    "type": "categorical"
+                },
+                {
+                    "field": "L_SHIPMODE",
+                    "type": "categorical"
+                },
+		        {
+                    "field": "L_COMMENT",
+                    "type": "categorical"
+                }
+            ]
+        },
+        "dimension": {
+            "foreign_key": "L_ORDERKEY, L_PARTKEY, L_SUPPKEY"
+        }
+    }
+}

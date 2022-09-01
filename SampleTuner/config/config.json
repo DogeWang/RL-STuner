@@ -1,0 +1,28 @@
+{
+    "meta": {
+        "dbname": {
+            "name": "flightsdb_100million"
+        },
+        "k": {
+            "scale": 10000
+        },
+        "storage_sample_number": {
+            "number": 5
+        },
+        "workload": {
+            "filename": "flights/exploratory_workload.txt"
+        },
+        "train_query_number": {
+            "number": 0
+        },
+        "error_threshold": {
+            "threshold": 0.02
+        },
+        "sampling_rate": {
+            "rate": 0.1
+        },
+        "window_length": {
+            "n": 10
+        }
+    }
+}
