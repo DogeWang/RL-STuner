@@ -156,7 +156,7 @@ def calculate_action_utility(workload, materialized_samples, exact=True):
     query_sample, sample_query, _ = map_query_sample_benefit(workload, materialized_samples, exact)
     global workload_length
     if workload_length <= 50:
-        p = -0.001
+        p = 0
     else:
         p = -1
 
