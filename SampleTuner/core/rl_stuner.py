@@ -201,7 +201,7 @@ def deep_q_nn(workload, sample_list, epochs=1000, epsilon=0.1, learning_rate=0.3
         stats_utility[i] += env.utility
         materialized_samples_list.append(env.active_samples)
         active_sample_set = env.active_samples
-    # active_sample_set = materialized_samples_list[stats_utility.argmax()]
+    active_sample_set = materialized_samples_list[stats_utility.argmax()]
     tc_dqn = time.time() - start
     print('The time cost of training DQN (s): ', tc_dqn)
     print('The active samples of DQN is: ', end='')
