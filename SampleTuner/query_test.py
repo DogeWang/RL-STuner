@@ -1,5 +1,4 @@
 import psycopg2
-import time
 import pandas as pd
 import toolkit.tools
 import toolkit.query_execute
@@ -82,7 +81,6 @@ def test(method, test_workload, file_name, active_sample_set=set()):
             if relative_error <= error_threshold:
                 usable_bool_list.append(1)
             else:
-                start = time.time()
                 sample_tuning_number += 1
                 print('The relative error is larger than the error threshold.')
                 if True:
@@ -97,9 +95,7 @@ def test(method, test_workload, file_name, active_sample_set=set()):
                                                                                      active_sample_set, method)
                 usable_bool_list.append(-2)
                 last_invokation_num = i
-                print('The time cost of sample tuning: ', time.time() - start)
         else:
-            start = time.time()
             sample_tuning_number += 1
             relative_error_list.append(1)
             query_latency_list.append(-1)
@@ -118,7 +114,6 @@ def test(method, test_workload, file_name, active_sample_set=set()):
                 elif method == 'RL-STuner':
                     active_sample_set = core.rl_stuner.lazy_sample_tuning(test_workload[:i],
                                                                           active_sample_set, method)
-                print('The time cost of sample tuning: ', time.time() - start)
         i += 1
 
     avg_relative_error = sum(relative_error_list) / len(test_workload)
@@ -126,6 +121,8 @@ def test(method, test_workload, file_name, active_sample_set=set()):
     print('Average Relative error: ', avg_relative_error)
     conn.commit()
     conn.close()
+    toolkit.sample_materialize.sample_list.clear()
+    toolkit.sample_materialize.sample_name_set.clear()
 
     dataframe = pd.DataFrame({'Query Latency': query_latency_list, 'Relative Error': relative_error_list, 'Selectivity': query_selectivity_list, 'Usable': usable_bool_list})
     dataframe.to_csv(file_name, sep=',', mode='a')
@@ -135,9 +132,7 @@ def test(method, test_workload, file_name, active_sample_set=set()):
 
 def test_basic(method, test_workload, num=0):
     global query_data_dict
-    start = time.time()
     query_data_dict.update(toolkit.query_execute.query_execute_data(test_workload))
 
     avg_re_result = test(method, test_workload, 'statistical_of_dynamic_workload_' + method + '_' + str(num) + '.csv')
-    print('The time cost of basic test (' + method + '): ', time.time() - start)
     return avg_re_result
