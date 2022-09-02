@@ -23,6 +23,10 @@ short session workload, middle session workload, long session workload, explorat
 
 exploratory workload and lineitem.json (attributes).
 
+/workload/example_workload.txt
+
+example workload
+
 ## Running Sample Tuner:
 
 nohup python3 -u main.py &
